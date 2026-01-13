@@ -1,0 +1,248 @@
+/* ===================================
+   Map Selector Styles
+   =================================== */
+
+.map-selector {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+}
+
+/* Sidebar */
+.map-sidebar {
+    background: var(--dark-surface);
+    border-right: 1px solid var(--dark-border);
+    padding: var(--space-6);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.sidebar-header h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+}
+
+.sidebar-header p {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+}
+
+/* Coordinate Form */
+.coordinate-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.form-group label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--gray-300);
+}
+
+.form-group input {
+    padding: var(--space-3) var(--space-4);
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-md);
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    transition: all var(--transition-fast);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.form-group input::placeholder {
+    color: var(--gray-500);
+}
+
+.locate-btn {
+    width: 100%;
+    margin-top: var(--space-2);
+}
+
+/* Quick Presets */
+.quick-presets h3 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--gray-300);
+    margin-bottom: var(--space-3);
+}
+
+.preset-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.preset-btn {
+    padding: var(--space-2) var(--space-3);
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-md);
+    color: var(--gray-300);
+    font-size: var(--text-xs);
+    transition: all var(--transition-fast);
+}
+
+.preset-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+/* Selected Location Info */
+.selected-location-info {
+    background: var(--dark-card);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    animation: fadeIn 0.3s ease;
+}
+
+.selected-location-info h3 {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-4);
+    color: var(--primary-light);
+}
+
+.location-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-label {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+}
+
+.detail-value {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--white);
+}
+
+.analyze-btn {
+    width: 100%;
+    padding: var(--space-4);
+    font-size: var(--text-base);
+}
+
+.analyze-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Map Container */
+.map-container {
+    position: relative;
+    height: 100%;
+}
+
+.leaflet-map {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Override Leaflet default styles */
+.leaflet-container {
+    background: var(--dark-bg);
+    font-family: var(--font-primary);
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.leaflet-control-zoom a {
+    background: var(--dark-card) !important;
+    color: var(--white) !important;
+    border: 1px solid var(--dark-border) !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--dark-surface) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(10, 22, 18, 0.8) !important;
+    color: var(--gray-500) !important;
+}
+
+.leaflet-control-attribution a {
+    color: var(--primary-light) !important;
+}
+
+/* Map Overlay Info */
+.map-overlay-info {
+    position: absolute;
+    top: var(--space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(21, 36, 32, 0.9);
+    backdrop-filter: blur(10px);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--dark-border);
+    font-size: var(--text-sm);
+    color: var(--gray-300);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .map-selector {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto;
+        min-height: calc(100vh - 80px);
+    }
+
+    .map-sidebar {
+        order: 2;
+        max-height: none;
+    }
+
+    .map-container {
+        order: 1;
+        height: 50vh;
+        min-height: 400px;
+    }
+}

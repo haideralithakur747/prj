@@ -1,0 +1,231 @@
+/* ===================================
+   Soil Health Panel Styles
+   =================================== */
+
+.soil-health-panel {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    animation: fadeIn 0.5s ease;
+}
+
+.panel-header {
+    margin-bottom: var(--space-6);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.header-icon {
+    font-size: var(--text-2xl);
+}
+
+.header-content h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-1);
+}
+
+.header-content p {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+}
+
+/* Scores Section */
+.scores-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.score-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-xl);
+}
+
+.score-ring {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.score-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.score-bg {
+    fill: none;
+    stroke: var(--dark-border);
+    stroke-width: 8;
+}
+
+.score-progress {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 1s ease;
+}
+
+.score-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-number {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--white);
+}
+
+.score-label {
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    text-transform: uppercase;
+}
+
+.score-title {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+    text-align: center;
+}
+
+/* Nutrients Section */
+.nutrients-section h3 {
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-4);
+    color: var(--gray-300);
+}
+
+.nutrient-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.nutrient-item {
+    padding: var(--space-4);
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    animation: fadeIn 0.5s ease backwards;
+    transition: all var(--transition-fast);
+}
+
+.nutrient-item:hover {
+    border-color: var(--primary);
+}
+
+.nutrient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-3);
+}
+
+.nutrient-info {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.nutrient-icon {
+    font-size: var(--text-xl);
+}
+
+.nutrient-name {
+    display: block;
+    font-weight: var(--font-semibold);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-1);
+}
+
+.nutrient-desc {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+}
+
+.nutrient-values {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-1);
+}
+
+.current-value {
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    color: var(--white);
+}
+
+.status-badge {
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+}
+
+.status-badge.excellent {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+}
+
+.status-badge.good {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--primary-light);
+}
+
+.status-badge.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.nutrient-bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.optimal-range {
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .scores-section {
+        grid-template-columns: 1fr;
+    }
+
+    .nutrient-header {
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .nutrient-values {
+        align-items: flex-start;
+        flex-direction: row;
+        gap: var(--space-3);
+    }
+}
