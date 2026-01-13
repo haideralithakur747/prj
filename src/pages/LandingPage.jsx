@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import './LandingPage.css';
 
@@ -134,8 +135,8 @@ const LandingPage = () => {
                         <div className="footer-links">
                             <div className="link-group">
                                 <h4>Product</h4>
-                                <a href="#">Features</a>
-                                <a href="#">Pricing</a>
+                                <Link to="/analyze">Analyze Land</Link>
+                                <Link to="/dashboard">Dashboard</Link>
                                 <a href="#">API</a>
                             </div>
                             <div className="link-group">
@@ -148,12 +149,12 @@ const LandingPage = () => {
                                 <h4>Company</h4>
                                 <a href="#">About</a>
                                 <a href="#">Careers</a>
-                                <a href="#">Contact</a>
+                                <Link to="/contact">Contact</Link>
                             </div>
                         </div>
                     </div>
                     <div className="footer-bottom">
-                        <p>© 2024 GeoCrop AI. Academic Project Demo.</p>
+                        <p>© 2024 GeoCrop AI. Academic Project by Haider Ali Thakur.</p>
                     </div>
                 </div>
             </footer>

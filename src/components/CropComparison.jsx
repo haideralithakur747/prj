@@ -155,26 +155,7 @@ const CropComparison = ({ crops, soilAnalysis, useAI = false }) => {
                         <p className="comparison-desc">{comparison.costDifference?.description}</p>
                     </div>
 
-                    {/* Soil Impact */}
-                    <div className="comparison-section">
-                        <h3>🌍 Soil Impact</h3>
-                        <div className="impact-cards">
-                            <div className={`impact-card ${comparison.soilImpact?.current?.score > 0 ? 'positive' : comparison.soilImpact?.current?.score < -15 ? 'negative' : 'neutral'}`}>
-                                <span className="impact-crop">{comparison.currentCrop?.image} {comparison.currentCrop?.name}</span>
-                                <span className="impact-value">{comparison.soilImpact?.current?.impact}</span>
-                                <span className="impact-score">
-                                    {comparison.soilImpact?.current?.score > 0 ? '+' : ''}{comparison.soilImpact?.current?.score}%
-                                </span>
-                            </div>
-                            <div className={`impact-card ${comparison.soilImpact?.desired?.score > 0 ? 'positive' : comparison.soilImpact?.desired?.score < -15 ? 'negative' : 'neutral'}`}>
-                                <span className="impact-crop">{comparison.desiredCrop?.image} {comparison.desiredCrop?.name}</span>
-                                <span className="impact-value">{comparison.soilImpact?.desired?.impact}</span>
-                                <span className="impact-score">
-                                    {comparison.soilImpact?.desired?.score > 0 ? '+' : ''}{comparison.soilImpact?.desired?.score}%
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+
 
                     {/* Recommendations */}
                     <div className="comparison-recommendations">

@@ -166,16 +166,35 @@ export const compareCrops = (crop1, crop2, soilAnalysis) => {
     const cost1 = waterCost[crop1.waterRequirement] || 2000;
     const cost2 = waterCost[crop2.waterRequirement] || 2000;
 
-    // Soil impact calculation
-    const soilImpactMap = {
-        "Wheat": { impact: "Neutral", score: 0 },
-        "Rice": { impact: "Moderate Depletion", score: -15 },
-        "Corn": { impact: "Slight Depletion", score: -10 },
-        "Sugarcane": { impact: "Heavy Depletion", score: -25 },
-        "Cotton": { impact: "Moderate Depletion", score: -20 },
-        "Soybeans": { impact: "Positive (N-fixing)", score: 15 },
-        "Potatoes": { impact: "Slight Depletion", score: -8 },
-        "Tomatoes": { impact: "Neutral", score: -5 }
+    // Dynamic soil impact calculation based on crop characteristics
+    const calculateSoilImpact = (crop) => {
+        // Calculate based on water requirement and harvest time
+        const waterImpact = {
+            "Low": { impact: "Minimal Impact", baseScore: 5 },
+            "Medium": { impact: "Moderate Impact", baseScore: -5 },
+            "High": { impact: "Significant Impact", baseScore: -15 }
+        };
+
+        const base = waterImpact[crop.waterRequirement] || waterImpact["Medium"];
+
+        // Adjust based on crop type (legumes improve soil)
+        let adjustment = 0;
+        if (crop.name?.toLowerCase().includes('soy') ||
+            crop.name?.toLowerCase().includes('bean') ||
+            crop.name?.toLowerCase().includes('pea') ||
+            crop.name?.toLowerCase().includes('lentil')) {
+            adjustment = 20; // Nitrogen-fixing legumes improve soil
+        }
+
+        const finalScore = base.baseScore + adjustment;
+        let impact = base.impact;
+
+        if (finalScore > 10) impact = "Soil Enriching";
+        else if (finalScore > 0) impact = "Minimal Impact";
+        else if (finalScore > -10) impact = "Slight Nutrient Use";
+        else impact = "Higher Nutrient Demand";
+
+        return { impact, score: finalScore };
     };
 
     return {
@@ -198,10 +217,6 @@ export const compareCrops = (crop1, crop2, soilAnalysis) => {
                 : cost2 < cost1
                     ? `Desired crop saves ~$${cost1 - cost2}/ha`
                     : "Similar cultivation costs"
-        },
-        soilImpact: {
-            current: soilImpactMap[crop1.name] || { impact: "Unknown", score: 0 },
-            desired: soilImpactMap[crop2.name] || { impact: "Unknown", score: 0 }
         },
         recommendation: generateSwapRecommendation(crop1, crop2, soilAnalysis)
     };

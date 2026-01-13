@@ -249,10 +249,6 @@ Provide a JSON comparison (respond ONLY with valid JSON, no markdown):
     "difference": cost difference,
     "description": "cost comparison explanation"
   },
-  "soilImpact": {
-    "current": { "impact": "description of crop1 impact on soil", "score": number -30 to +20 },
-    "desired": { "impact": "description of crop2 impact on soil", "score": number -30 to +20 }
-  },
   "recommendation": ["array of 2-3 recommendation messages with emoji prefixes like ✅, ⚠️, ℹ️"]
 }`;
 
